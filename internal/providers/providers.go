@@ -139,6 +139,8 @@ var zhipuCodingConfig []byte
 type ProviderFunc func() catwalk.Provider
 
 var providerRegistry = []ProviderFunc{
+	aimlAPIProvider,
+
 	// Let's keep the main providers at the top.
 	anthropicProvider,
 	openAIProvider,
@@ -153,7 +155,6 @@ var providerRegistry = []ProviderFunc{
 
 	// The remaining will be in alphabetical order.
 	aiHubMixProvider,
-	aimlAPIProvider,
 	alibabaSingaporeProvider,
 	alibabaUnitedStatesProvider,
 	atlasCloudProvider,
