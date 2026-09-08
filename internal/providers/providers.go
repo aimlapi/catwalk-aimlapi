@@ -12,6 +12,9 @@ import (
 //go:embed configs/aihubmix.json
 var aiHubMixConfig []byte
 
+//go:embed configs/aimlapi.json
+var aimlAPIConfig []byte
+
 //go:embed configs/alibaba-singapore.json
 var alibabaSingaporeConfig []byte
 
@@ -136,6 +139,8 @@ var zhipuCodingConfig []byte
 type ProviderFunc func() catwalk.Provider
 
 var providerRegistry = []ProviderFunc{
+	aimlAPIProvider,
+
 	// Let's keep the main providers at the top.
 	anthropicProvider,
 	openAIProvider,
@@ -202,6 +207,10 @@ func loadProviderFromConfig(configData []byte) catwalk.Provider {
 
 func aiHubMixProvider() catwalk.Provider {
 	return loadProviderFromConfig(aiHubMixConfig)
+}
+
+func aimlAPIProvider() catwalk.Provider {
+	return loadProviderFromConfig(aimlAPIConfig)
 }
 
 func alibabaSingaporeProvider() catwalk.Provider {
